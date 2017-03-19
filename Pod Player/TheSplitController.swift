@@ -19,6 +19,7 @@ class TheSplitController: NSSplitViewController {
         if let podcastsVC = podcastsItem.viewController as? PodcastViewController {
             if let episodesVC = episodesItem.viewController as? EpisodesViewController {
                 podcastsVC.episodeVC = episodesVC
+                episodesVC.podcastsVC = podcastsVC
             }
         }
     }

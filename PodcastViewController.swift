@@ -69,6 +69,11 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
                                 (NSApplication.shared().delegate as? AppDelegate)?.saveAction(nil)
                                 
                                 self.getPodcasts()
+                                
+                                DispatchQueue.main.async {
+                                    self.podcastURLTextField.stringValue = ""
+                                }
+                                
                             }
                         }
                         
@@ -78,7 +83,7 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
                 
                 }.resume()
             
-            podcastURLTextField.stringValue = ""
+            
             
         }
     }
