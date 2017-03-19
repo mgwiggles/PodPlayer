@@ -989,6 +989,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="1EA-ex-vqW" id="YvO-G4-EPh"/>
                         <outlet property="imageView" destination="EbT-Fm-Coz" id="X0N-2P-ue5"/>
                         <outlet property="pausePlayButton" destination="E5f-On-EcU" id="1QL-pN-xzw"/>
                         <outlet property="tableView" destination="WEb-6w-bIy" id="Rlu-R0-6SJ"/>

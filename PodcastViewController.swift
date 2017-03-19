@@ -21,7 +21,7 @@ class PodcastViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         super.viewDidLoad()
         // Do view setup here.
         getPodcasts()
-        podcastURLTextField.stringValue = "http://www.espn.com/espnradio/podcast/feeds/itunes/podCast?id=2406595"
+//        podcastURLTextField.stringValue = ""
     }
     
     func getPodcasts() {
