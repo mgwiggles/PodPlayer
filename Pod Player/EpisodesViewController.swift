@@ -7,8 +7,10 @@
 //
 
 import Cocoa
+import AVFoundation
 
-class EpisodesViewController: NSViewController {
+class EpisodesViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+    
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var pausePlayButton: NSButton!
@@ -16,6 +18,8 @@ class EpisodesViewController: NSViewController {
     
     var podcast : Podcast? = nil
     var podcastsVC : PodcastViewController? = nil
+    var episodes : [Episode] = []
+    var player : AVPlayer? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +63,12 @@ class EpisodesViewController: NSViewController {
                     
                     if data != nil {
                         let parser = Parser()
-                        let episodes = parser.getEpisodes(data: data!)
-                        print(episodes)
+                        self.episodes = parser.getEpisodes(data: data!)
                         
                     }
-                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
                 
                 }.resume()
@@ -92,4 +97,34 @@ class EpisodesViewController: NSViewController {
     
     @IBAction func pausePlayClicked(_ sender: Any) {
     }
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return episodes.count
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        
+        let episode = episodes[row]
+        
+        let cell = tableView.make(withIdentifier: "episodeCell", owner: self) as! NSTableCellView
+        
+        cell.textField?.stringValue = episode.title
+        
+        return cell
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if tableView.selectedRow >= 0 {
+            
+            let episode = episodes[tableView.selectedRow]
+            
+                if let url = URL(string: episode.audioURL) {
+                    player = AVPlayer(url: url)
+                    
+                    player?.play()
+                }
+ 
+        }
+    }
+    
 }
