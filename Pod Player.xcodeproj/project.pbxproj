@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C99E3BC71E7F345400E8F81A /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99E3BC61E7F345400E8F81A /* EpisodeCell.swift */; };
 		C9AD8C151E7DE27000AAD04D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AD8C141E7DE27000AAD04D /* AppDelegate.swift */; };
 		C9AD8C1A1E7DE27000AAD04D /* Pod_Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9AD8C181E7DE27000AAD04D /* Pod_Player.xcdatamodeld */; };
 		C9AD8C1C1E7DE27000AAD04D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9AD8C1B1E7DE27000AAD04D /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C99E3BC61E7F345400E8F81A /* EpisodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		C9AD8C111E7DE27000AAD04D /* Pod Player.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pod Player.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9AD8C141E7DE27000AAD04D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9AD8C191E7DE27000AAD04D /* Pod_Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pod_Player.xcdatamodel; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				C9C977611E7E104C008F4DA2 /* TheSplitController.swift */,
 				C9AD8C281E7DE7AF00AAD04D /* PodcastViewController.swift */,
 				C9C9775F1E7E0E7C008F4DA2 /* EpisodesViewController.swift */,
+				C99E3BC61E7F345400E8F81A /* EpisodeCell.swift */,
 				C9AD8C321E7DEF3900AAD04D /* Parser.swift */,
 				C9C977631E7E16A0008F4DA2 /* Episode.swift */,
 				C9AD8C1D1E7DE27000AAD04D /* Main.storyboard */,
@@ -167,6 +170,7 @@
 				C9C977601E7E0E7C008F4DA2 /* EpisodesViewController.swift in Sources */,
 				C9AD8C291E7DE7AF00AAD04D /* PodcastViewController.swift in Sources */,
 				C9C977621E7E104C008F4DA2 /* TheSplitController.swift in Sources */,
+				C99E3BC71E7F345400E8F81A /* EpisodeCell.swift in Sources */,
 				C9AD8C1A1E7DE27000AAD04D /* Pod_Player.xcdatamodeld in Sources */,
 				C9AD8C361E7DF59D00AAD04D /* SWXMLHash.swift in Sources */,
 				C9C977641E7E16A0008F4DA2 /* Episode.swift in Sources */,

@@ -96,6 +96,14 @@ class EpisodesViewController: NSViewController, NSTableViewDelegate, NSTableView
     }
     
     @IBAction func pausePlayClicked(_ sender: Any) {
+        
+        if pausePlayButton.title == "Pause" {
+            player?.pause()
+            pausePlayButton.title = "Play"
+        } else {
+            player?.play()
+            pausePlayButton.title = "Pause"
+        }
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -106,11 +114,22 @@ class EpisodesViewController: NSViewController, NSTableViewDelegate, NSTableView
         
         let episode = episodes[row]
         
-        let cell = tableView.make(withIdentifier: "episodeCell", owner: self) as! NSTableCellView
+        let cell = tableView.make(withIdentifier: "episodeCell", owner: self) as! EpisodeCell
         
-        cell.textField?.stringValue = episode.title
+        cell.titleLabel.stringValue = episode.title
+        cell.pubDateLabel.stringValue = episode.pubDate.description
+        cell.descriptionWebView.mainFrame.loadHTMLString(episode.htmlDescription, baseURL: nil)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        
+        cell.pubDateLabel.stringValue = dateFormatter.string(from: episode.pubDate)
         
         return cell
+    }
+    
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return 100
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
@@ -119,10 +138,16 @@ class EpisodesViewController: NSViewController, NSTableViewDelegate, NSTableView
             let episode = episodes[tableView.selectedRow]
             
                 if let url = URL(string: episode.audioURL) {
+                    
+                    player?.pause()
+                    player = nil
                     player = AVPlayer(url: url)
                     
                     player?.play()
                 }
+            
+            pausePlayButton.isHidden = false
+            pausePlayButton.title = "Pause"
  
         }
     }

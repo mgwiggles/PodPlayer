@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -870,13 +871,13 @@
                                     <action selector="pausePlayClicked:" target="n8f-FG-2Wk" id="YPe-pO-Y81"/>
                                 </connections>
                             </button>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJ7-c5-nKo">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="31" horizontalPageScroll="10" verticalLineScroll="31" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJ7-c5-nKo">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="170"/>
                                 <clipView key="contentView" id="qFv-QG-fpr">
                                     <rect key="frame" x="1" y="0.0" width="448" height="169"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="xIU-wW-FaT" viewBased="YES" id="WEb-6w-bIy">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="29" rowSizeStyle="automatic" headerView="xIU-wW-FaT" viewBased="YES" id="WEb-6w-bIy">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -896,22 +897,55 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="episodeCell" id="OmW-di-MpK">
-                                                            <rect key="frame" x="1" y="1" width="445" height="17"/>
+                                                        <tableCellView identifier="episodeCell" id="OmW-di-MpK" customClass="EpisodeCell" customModule="Pod_Player" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="1" width="445" height="29"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField identifier="episodeCell" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I59-cd-l0I">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="445" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" identifier="episodeCell" title="Table View Cell" id="x5B-Un-myt">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkP-ZD-kdI">
+                                                                    <rect key="frame" x="8" y="6" width="326" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="aeg-Gd-DxZ"/>
+                                                                    </constraints>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Gug-zH-naj">
+                                                                        <font key="font" metaFont="systemBold"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lo3-Qw-udK">
+                                                                    <rect key="frame" x="350" y="6" width="94" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="90" id="n6I-CW-MfO"/>
+                                                                        <constraint firstAttribute="height" constant="20" id="zBL-Gy-ipO"/>
+                                                                    </constraints>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="aHY-f2-dGh">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <webView translatesAutoresizingMaskIntoConstraints="NO" id="L74-8D-doK">
+                                                                    <rect key="frame" x="3" y="3" width="439" height="0.0"/>
+                                                                    <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
+                                                                        <nil key="identifier"/>
+                                                                    </webPreferences>
+                                                                </webView>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="L74-8D-doK" secondAttribute="bottom" constant="3" id="BKT-Oo-rZa"/>
+                                                                <constraint firstItem="L74-8D-doK" firstAttribute="leading" secondItem="OmW-di-MpK" secondAttribute="leading" constant="3" id="Csq-mO-mHk"/>
+                                                                <constraint firstAttribute="trailing" secondItem="lo3-Qw-udK" secondAttribute="trailing" constant="3" id="HHy-h9-vUS"/>
+                                                                <constraint firstItem="L74-8D-doK" firstAttribute="top" secondItem="lo3-Qw-udK" secondAttribute="bottom" constant="3" id="HIR-G9-hi4"/>
+                                                                <constraint firstItem="lo3-Qw-udK" firstAttribute="top" secondItem="OmW-di-MpK" secondAttribute="top" constant="3" id="WhI-p0-Kjs"/>
+                                                                <constraint firstItem="BkP-ZD-kdI" firstAttribute="leading" secondItem="OmW-di-MpK" secondAttribute="leading" constant="10" id="bAQ-3p-j78"/>
+                                                                <constraint firstAttribute="trailing" secondItem="L74-8D-doK" secondAttribute="trailing" constant="3" id="egb-Ct-4Zs"/>
+                                                                <constraint firstItem="BkP-ZD-kdI" firstAttribute="top" secondItem="OmW-di-MpK" secondAttribute="top" constant="3" id="kPC-h6-paD"/>
+                                                                <constraint firstItem="lo3-Qw-udK" firstAttribute="leading" secondItem="BkP-ZD-kdI" secondAttribute="trailing" constant="20" id="pD3-V5-4ju"/>
+                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="I59-cd-l0I" id="3et-Wb-02l"/>
+                                                                <outlet property="descriptionWebView" destination="L74-8D-doK" id="TWY-mL-mvp"/>
+                                                                <outlet property="pubDateLabel" destination="lo3-Qw-udK" id="jJ0-30-QTM"/>
+                                                                <outlet property="titleLabel" destination="BkP-ZD-kdI" id="PLQ-lx-HA4"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
